@@ -1,0 +1,19 @@
+From: Matt McCutchen <matt@mattmccutchen.net>
+Subject: Implement quote removal in split_long_args_with_quotes
+Forwarded: yes, https://github.com/rsnapshot/rsnapshot/pull/23
+Bug-Debian: https://bugs.debian.org/786854
+
+--- a/rsnapshot-program.pl
++++ b/rsnapshot-program.pl
+@@ -3778,8 +3778,9 @@
+         # in quotes and got a close quote
+ 	    } elsif($thischar eq $inquotes) {
+ 	        $inquotes = '';
+-            }
+-	    $stack[-1] .= $thischar;
++            } else {
++	        $stack[-1] .= $thischar;
++	    }
+ 	}
+ 	if($inquotes) {
+ 	    print_err("Unbalanced quotes in $argname", 1);

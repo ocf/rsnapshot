@@ -14,3 +14,4 @@
 17_linux_lvm_cmd_lvremove_silenced.diff
 18_rsnapreport_rsync_output.diff
 19_cmd_postexec_umount.diff
+20_split_long_args_remove_quotes.diff
